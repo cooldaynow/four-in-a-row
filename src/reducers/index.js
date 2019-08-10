@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import borderReducer from './borderReducer';
+import boardReducer from './boardReducer';
  export default combineReducers({
-   border: borderReducer
+   board :boardReducer 
 })

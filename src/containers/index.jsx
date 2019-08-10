@@ -3,7 +3,7 @@ import { addBall } from '../actions'
 import App from '../components/App'
 
 const mapStateToProps = (state, ownProps) => ({
-  border :state.border.columns 
+  board :state.board 
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

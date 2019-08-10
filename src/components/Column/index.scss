@@ -1,0 +1,20 @@
+.wrap__column {
+  display: flex;
+  align-items: center;
+  width:100px;
+  height:500px;
+  margin:5px;
+  border:1px solid black;
+  flex-direction: column;
+  padding:2px;
+}
+.ball {
+  width:100%;
+  height:calc(100% / 7);
+  background-color:lightgreen;
+  margin-bottom:10px;
+  border:1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
