@@ -1,15 +1,13 @@
 import React from 'react';
 import './index.scss';
+import Ball from '../../components/Ball';
 
 const Column = ({column, addBall, id}) => {
-  console.log(column, id);
-  let handleClick = () => column.length < 5 && addBall(id);
+  let handleClick = () => column.length <= 5 && addBall(id);
   return (
     <div className="wrap__column" onClick={handleClick}>
       {column.map((ball, i) => (
-        <div className="ball" key={i * Math.random()}>
-          {column[i].info}
-        </div>
+        <Ball key={`ball${i}`}  player={column[i].player} />
       ))}
     </div>
   );

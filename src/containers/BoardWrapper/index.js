@@ -1,13 +1,9 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import Board from '../../components/Board';
 const mapStateToProps = state => {
   return {
-    columns: state.board.columns,
-    board: state.board,
+    columns: Object.values(state.board.columns),
   };
 };
 
-export default connect(
-  mapStateToProps,
-)(Board);
+export default connect(mapStateToProps)(Board);

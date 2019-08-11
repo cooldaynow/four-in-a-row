@@ -1,11 +1,9 @@
 .app {
   display: flex;
-
+  background-color:lightgreen;
+  min-height:100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.column {
-  height:500px;
-  width:100px;
-  border:1px solid black;
-  margin:5px;
-}
+

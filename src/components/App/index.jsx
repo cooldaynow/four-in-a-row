@@ -1,7 +1,8 @@
 import React from 'react';
 import BoardWrapper from '../../containers/BoardWrapper';
+import './index.scss';
 
-const App = ({  }) => {
+const App = () => {
   return (
     <div className='app'>
       <BoardWrapper /> 

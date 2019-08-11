@@ -1,0 +1,16 @@
+.ball {
+  width: 100%;
+  height: calc(100% / 7);
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.red {
+    background-color: red;
+  }
+  &.green {
+    background-color: green;
+  }
+}

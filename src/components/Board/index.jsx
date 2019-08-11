@@ -1,14 +1,21 @@
 import React from 'react';
-import ColumnContainer from '../../containers/ColumnContainer';
+import ColumnWrapper from '../../containers/ColumnWrapper';
 import './index.scss';
 
-const Board = ({columns, board, addBall}) => (
-  
+const Board = ({columns}) =>{
+  console.log(columns);
+  return (
   <div className="board">
-    {columns.map((el, i) => (
-      <ColumnContainer key = {i} column = {board[i]} id = {i} />
+    {columns.map((col, i) => (
+      <ColumnWrapper
+        key={i}
+        column={columns[i]}
+        id={i}
+        className="wrap__column"
+      />
     ))}
   </div>
 );
 
+}
 export default Board;
