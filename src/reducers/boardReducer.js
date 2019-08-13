@@ -1,14 +1,4 @@
-/*const initialState = {
-  0: [],
-  1: [],
-  2: [],
-  3: [],
-  4: [],
-  5: [],
-  6: [],
-  player: true,
-  columns: new Array(6).fill(0),
-};*/
+import testWinner from '../gameLogic/';
 const initialState = {
   columns: {
     0: [],
@@ -20,17 +10,28 @@ const initialState = {
     6: [],
   },
   player: true,
+  gameEnd: null,
 };
 const boardReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_BALL':
       return {
         ...state,
-        ['columns']: {
+        columns: {
           ...state.columns,
-          [action.id]: [...state.columns[action.id], {player: state.player}],
+          [action.index]: [...state.columns[action.index], state.player],
         },
-        ['player']: !state.player,
+      };
+    case 'CHANGE_PLAYER':
+      return {
+        ...state,
+        player: !state.player,
+      };
+    case 'CHECK_WINNER':
+      console.log('work')
+      return {
+        ...state,
+        gameEnd: action.gameEnd,
       };
     default:
       return state;
