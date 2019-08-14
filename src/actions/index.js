@@ -1,6 +1,7 @@
+import testWinner from '../gameLogic';
 const ADD_BALL = 'ADD_BALL';
 const CHANGE_PLAYER = 'CHANGE_PLAYER';
-const CHECK_WINNER = 'CHECK_WINNER';
+const GAME_OVER = 'GAME_OVER';
 
 export const addBall = index => {
   return {
@@ -13,9 +14,19 @@ export const changePlayer = () => {
     type: CHANGE_PLAYER,
   };
 };
-export const checkWinner = (gameEnd) => {
+export const setGameOver = gameOver=> {
   return {
-    type: CHECK_WINNER,
-    gameEnd
+    type: GAME_OVER,
+    gameOver,
   };
-}; 
+};
+export const checkGameOver = () => {
+  return (dispatch, getState) => {
+    const {
+      board: {columns},
+    } = getState();
+    const gameOver = testWinner(Object.values(columns));
+    console.log(gameOver);
+    dispatch(setGameOver(gameOver));
+  };
+};

@@ -1,15 +1,14 @@
 import React, {useEffect} from 'react';
 
+
 import ColumnWrapper from '../../containers/ColumnWrapper';
 import './index.scss';
 
-const Board = ({columns, gameEnd, player}) => {
-
+const Board = ({columns, gameOver, player}) => {
+console.log(player,'player')
   return (
     <div className="board">
-      {/*winner && <p>{player.toString()}</p>}
-      {winner === false && <p>{player.toString()}fdsjkfjs</p>*/}
-      {gameEnd && <p>{player.toString()}</p>}
+      {gameOver && <p>{player.toString()}</p>}
       {columns.map((col, i) => (
         <ColumnWrapper
           key={i}

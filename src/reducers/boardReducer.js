@@ -1,4 +1,3 @@
-import testWinner from '../gameLogic/';
 const initialState = {
   columns: {
     0: [],
@@ -10,7 +9,7 @@ const initialState = {
     6: [],
   },
   player: true,
-  gameEnd: null,
+  gameOver: false,
 };
 const boardReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,15 +22,16 @@ const boardReducer = (state = initialState, action) => {
         },
       };
     case 'CHANGE_PLAYER':
+      //console.log('change player');
       return {
         ...state,
         player: !state.player,
       };
-    case 'CHECK_WINNER':
-      console.log('work')
+    case 'GAME_OVER':
+      //  console.log('game over');
       return {
         ...state,
-        gameEnd: action.gameEnd,
+        gameOver: action.gameOver,
       };
     default:
       return state;

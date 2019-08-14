@@ -1,20 +1,20 @@
 import {connect} from 'react-redux';
 import Column from '../../components/Column';
-import {addBall, changePlayer,checkWinner} from '../../actions';
+import {addBall, changePlayer, setGameOver} from '../../actions';
 import testWinner from '../../gameLogic';
 
-const mapStateToProps =(state) => {
-  const columns = Object.values(state.board.columns);
+const mapStateToProps = state => {
   return {
-    columns:testWinner(columns),
-    gameEnd:state.board.gameEnd
-  }
-}
+    gameOver: state.board.gameOver,
+    columns: Object.values(state.board.columns),
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     addBall: index => dispatch(addBall(index)),
     changePlayer: () => dispatch(changePlayer()),
-    checkWinner: (gameEnd)=>dispatch(checkWinner(gameEnd))
+    //checkGameOver: () => dispatch(checkGameOver()),
+    checkGameOver: columns => dispatch(setGameOver(testWinner(columns))),
   };
 };
 

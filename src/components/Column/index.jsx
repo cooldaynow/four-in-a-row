@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './index.scss';
 import Ball from '../../components/Ball';
 
-const Column = ({column,gameEnd, addBall, changePlayer, index, columns,checkWinner}) => {
+const Column = ({
+  index,
+  column,
+  addBall,
+  gameOver,
+  changePlayer,
+  checkGameOver,
+  columns,
+}) => {
   const handleClick = () => {
-    column.length <= 5 && addBall(index);
-    changePlayer()
-    checkWinner(columns)
+    if (column.length <= 5 && !gameOver) {
+      addBall(index);
+      changePlayer();
+    }
   };
+  useEffect(() => {
+    checkGameOver(columns);
+  }, [column.length]);
   return (
     <div className="wrap__column" onClick={handleClick}>
-      {gameEnd && <p> afdsaklfajsfkljsafkas</p>}
       {column &&
         column.map((ball, i) => <Ball key={`ball${i}`} player={column[i]} />)}
     </div>
