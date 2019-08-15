@@ -1,6 +1,19 @@
+.board__wrap {
+  display: flex;
+  flex-direction: column;
+}
+
 .board {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.result {
+  min-height: 80px;
+  width:100%;
+  background-color:lightyellow;
+}
+.none {
+  opacity:0;
 }
 

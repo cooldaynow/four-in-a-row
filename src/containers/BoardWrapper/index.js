@@ -5,7 +5,7 @@ const mapStateToProps = state => {
   const columns = Object.values(state.board.columns);
   return {
     columns,
-    gameOver:state.board.gameOver,
+    gameOver: state.board.gameOver,
     player: !state.board.player,
   };
 };

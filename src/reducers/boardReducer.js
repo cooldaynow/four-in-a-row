@@ -33,6 +33,10 @@ const boardReducer = (state = initialState, action) => {
         ...state,
         gameOver: action.gameOver,
       };
+    case 'RESTART' :
+      return {
+        ...initialState
+      }
     default:
       return state;
   }
