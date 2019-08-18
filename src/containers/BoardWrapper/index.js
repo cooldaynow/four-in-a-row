@@ -26,11 +26,7 @@ const BoardWrapper = ({cols, gameOver, player, checkGameOver}) => {
 
 const mapStateToProps = state => {
   return {
-<<<<<<< HEAD
     cols: state.board.cols,
-=======
-    columns,
->>>>>>> c1343bb3326d7229e4d613662d04a70c89ed1fb6
     gameOver: state.board.gameOver,
     player: !state.board.player,
   };
