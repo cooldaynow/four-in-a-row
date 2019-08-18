@@ -1,4 +1,3 @@
-
 const square = 4;
 const checkWin = (x, arr) => {
   for (let col = 0, len = 4; col < len; col++) {
@@ -43,19 +42,7 @@ const testWinner = arr => {
   if (checkWin(true, arr) || checkWin(false, arr)) {
     return true;
   }
-
   return false;
-  /* const array = [
-    [1, 0, 1, 1, 1, 0, 0],
-    [1, 0, 1, 1, 1, 0, 1],
-    [1, 1, 0, 0, 1, 0, 1],
-    [0, 0, 0, 0, 1, 0, 1],
-    [0, 0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 1, 0, 0, 0],
-  ];
-  //console.log('work');
-  // return checkWin(1, array);
-  // */
 };
 
 export default testWinner;

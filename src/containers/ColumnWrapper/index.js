@@ -1,24 +1,47 @@
+import React from 'react';
 import {connect} from 'react-redux';
-import Column from '../../components/Column';
-import {addBall, changePlayer, setGameOver} from '../../actions';
-import testWinner from '../../gameLogic';
+import {addBall, changePlayer} from '../../actions';
+import Ball from '../../components/Ball';
+import './index.scss';
 
+const ColumnWrapper = ({
+  index,
+  column,
+  addBall,
+  gameOver,
+  changePlayer,
+  cols,
+  addTest,
+}) => {
+  const handleClick = () => {
+    if (column.length <= 5 && !gameOver) {
+      addBall(index);
+      changePlayer();
+      // console.log(cols)
+    }
+  };
+  return (
+    <div className="wrap__column" onClick={handleClick}>
+      {column.map((ball, i) => (
+        <Ball key={`ball${i}`} player={column[i]} />
+      ))}
+    </div>
+  );
+};
 const mapStateToProps = state => {
   return {
     gameOver: state.board.gameOver,
-    columns: Object.values(state.board.columns),
+    cols: state.board.cols,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     addBall: index => dispatch(addBall(index)),
     changePlayer: () => dispatch(changePlayer()),
-    //checkGameOver: () => dispatch(checkGameOver()),
-    checkGameOver: columns => dispatch(setGameOver(testWinner(columns))),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Column);
+)(ColumnWrapper);

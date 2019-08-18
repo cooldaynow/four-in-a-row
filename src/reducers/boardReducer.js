@@ -1,25 +1,19 @@
 const initialState = {
-  columns: {
-    0: [],
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-    6: [],
-  },
+  cols: [[], [], [], [], [], [], []],
   player: true,
   gameOver: false,
 };
 const boardReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_BALL':
+      // console.log('add TEST', state.cols);
       return {
         ...state,
-        columns: {
-          ...state.columns,
-          [action.index]: [...state.columns[action.index], state.player],
-        },
+        cols: [
+          ...state.cols.slice(0, action.index),
+          [...state.cols[action.index], state.player],
+          ...state.cols.slice(action.index + 1),
+        ],
       };
     case 'CHANGE_PLAYER':
       //console.log('change player');

@@ -14,19 +14,10 @@ export const changePlayer = () => {
     type: CHANGE_PLAYER,
   };
 };
-export const setGameOver = gameOver=> {
+export const setGameOver = columns => {
+  const gameOver = testWinner(columns);
   return {
     type: GAME_OVER,
     gameOver,
-  };
-};
-export const checkGameOver = () => {
-  return (dispatch, getState) => {
-    const {
-      board: {columns},
-    } = getState();
-    const gameOver = testWinner(Object.values(columns));
-    console.log(gameOver);
-    dispatch(setGameOver(gameOver));
   };
 };
