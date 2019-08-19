@@ -1,0 +1,15 @@
+.screen__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  background-color:lightgrey;
+}
+.screen__buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+}

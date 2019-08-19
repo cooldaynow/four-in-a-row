@@ -1,7 +1,9 @@
 const initialState = {
   cols: [[], [], [], [], [], [], []],
   player: true,
+  color: true,
   gameOver: false,
+  startGame: false,
 };
 const boardReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,15 +23,27 @@ const boardReducer = (state = initialState, action) => {
         ...state,
         player: !state.player,
       };
+    case 'CHANGE_COLOR':
+      //console.log('change color');
+      return {
+        ...state,
+        color: !state.color,
+      };
     case 'GAME_OVER':
       //  console.log('game over');
       return {
         ...state,
         gameOver: action.gameOver,
       };
-    case 'RESTART_GAME' : 
+    case 'RESTART_GAME':
       return {
-        ...initialState
+        ...initialState,
+        startGame: true,
+      };
+    case 'START':
+      return {
+        ...state,
+        startGame: true,
       };
     default:
       return state;

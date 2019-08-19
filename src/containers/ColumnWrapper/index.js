@@ -12,6 +12,7 @@ const ColumnWrapper = ({
   changePlayer,
   cols,
   addTest,
+  color,
 }) => {
   const handleClick = () => {
     if (column.length <= 5 && !gameOver) {
@@ -23,7 +24,7 @@ const ColumnWrapper = ({
   return (
     <div className="wrap__column" onClick={handleClick}>
       {column.map((ball, i) => (
-        <Ball key={`ball${i}`} player={column[i]} />
+        <Ball key={`Ball ${i}`} player={column[i]} color={color} />
       ))}
     </div>
   );
@@ -32,6 +33,7 @@ const mapStateToProps = state => {
   return {
     gameOver: state.board.gameOver,
     cols: state.board.cols,
+    color: state.board.color,
   };
 };
 const mapDispatchToProps = dispatch => {

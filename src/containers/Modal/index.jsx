@@ -1,15 +1,25 @@
 import {connect} from 'react-redux';
-import {setGameOver, restartGame} from '../../actions';
-import React from 'react';
+import {restartGame} from '../../actions';
+import React, {useEffect, useState} from 'react';
 import './index.scss';
 
 const Modal = ({gameOver, restartGame, player}) => {
+  const [modal, setModal] = useState('none');
   const handleClick = () => {
-    restartGame();
+    setModal('modal none');
+    setTimeout(() => {
+      restartGame();
+    }, 500);
   };
+  useEffect(() => {
+    setTimeout(() => {
+      setModal('modal');
+    }, 500);
+  }, []);
 
   return (
-    <div className={gameOver ? 'modal' : 'modal none'}>
+    /*<div className={gameOver ? 'modal' : 'modal none'}>*/
+    <div className={`${modal}`}>
       <p> {player ? 'player 1 win' : 'player 2 win'} </p>
       <button onClick={handleClick}>RESTART</button>
     </div>

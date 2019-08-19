@@ -1,23 +1,25 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {setGameOver} from '../../actions';
 import ColumnWrapper from '../../containers/ColumnWrapper';
 import './index.scss';
 
-const BoardWrapper = ({cols, gameOver, player, checkGameOver}) => {
+const BoardWrapper = ({cols, checkGameOver}) => {
+  const [animation, setAnimation] = useState('board none');
   useEffect(() => {
-    console.log(cols);
+    //console.log(cols);
     checkGameOver(cols);
+    setTimeout(() => {
+      setAnimation('board');
+    }, 500);
   }, [cols, checkGameOver]);
   return (
-    <div className="board">
-      {gameOver && <p>{player.toString()}</p>}
+    <div className={animation}>
       {cols.map((col, i) => (
         <ColumnWrapper
-          key={i}
+          key={`Col ${i}`}
           column={cols[i]}
           index={i}
-          className="wrap__column"
         />
       ))}
     </div>
