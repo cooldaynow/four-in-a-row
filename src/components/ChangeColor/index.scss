@@ -1,0 +1,24 @@
+@media only screen and (max-width: 600px) {
+  .btn__group {
+    div {
+      width: 70px !important;
+      height: 70px !important;
+    }
+  }
+}
+.btn__group {
+  display: flex;
+  div {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  .white {
+    background-color: white;
+  }
+  .black {
+    background-color: black;
+  }
+}

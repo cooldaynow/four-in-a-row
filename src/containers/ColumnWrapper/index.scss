@@ -1,11 +1,10 @@
 .wrap__column {
   display: flex;
   align-items: center;
-  width:calc(500px / 7);
-  height:500px;
-  margin:5px;
-  border:1px solid black;
+  width: calc(500px / 7);
+  height: 500px;
+  margin: 5px;
+  border: 1px solid black;
   flex-direction: column-reverse;
-  padding:2px;
+  padding: 2px;
 }
-

@@ -1,40 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {start, changeColor} from '../../actions';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import {firstPlayerChooseColor} from '../../actions';
+import SettingsButton from '../../components/SettingsButton';
+import StartScreenHeader from '../../components/StartScreenHeader';
 import './index.scss';
 
-const StartScreen = ({start, player, changeColor, color}) => (
+const StartScreen = ({firstPlayerChooseColor}) => (
   <div className="screen__wrap">
-    <div className="screen__header">
-      <div className="left balls" />
-      <h1> 4 In A Row </h1>
-      <div className="right balls" />
-    </div>
-    <div className="screen__buttons">
-      <button className="start__button" onClick={start}>
-        <FontAwesomeIcon icon={faPlayCircle} />{' '}
-      </button>
-    </div>
+    <StartScreenHeader />
+    <SettingsButton settings={firstPlayerChooseColor} />
   </div>
 );
 
-const mapStateToProps = state => {
-  return {
-    startGame: state.board.startGame,
-    player: state.board.player,
-    color: state.board.color,
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    start: () => dispatch(start()),
-    changeColor: () => dispatch(changeColor()),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  firstPlayerChooseColor: () => dispatch(firstPlayerChooseColor()),
+});
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(StartScreen);

@@ -4,6 +4,7 @@ const initialState = {
   color: true,
   gameOver: false,
   startGame: false,
+  chooseColor: false,
 };
 const boardReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -39,11 +40,17 @@ const boardReducer = (state = initialState, action) => {
       return {
         ...initialState,
         startGame: true,
+        chooseColor: true,
       };
     case 'START':
       return {
         ...state,
         startGame: true,
+      };
+    case 'CHOOSE_COLOR':
+      return {
+        ...state,
+        chooseColor: true,
       };
     default:
       return state;

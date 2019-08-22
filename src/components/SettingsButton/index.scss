@@ -1,0 +1,16 @@
+.choose__button {
+  margin: 0;
+  padding: 20px;
+  background-color: transparent;
+  outline: none !important;
+  border: none;
+  cursor: pointer;
+  font-size: 7em;
+  transition: all 0.2s linear;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}

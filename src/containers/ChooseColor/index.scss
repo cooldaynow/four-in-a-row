@@ -1,0 +1,35 @@
+@media only screen and (max-width: 600px) {
+  .wrap__choose {
+    text-align: center;
+    h1 {
+      font-size: 40px !important;
+      &:after {
+        width: 50% !important;
+        left: 25% !important;
+      }
+    }
+  }
+}
+.wrap__choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: grey;
+
+  h1 {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 70px;
+    position: relative;
+    &:after {
+      content: '';
+      border: 2px solid black;
+      width: 100%;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+    }
+  }
+}

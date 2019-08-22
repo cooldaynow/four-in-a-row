@@ -5,18 +5,8 @@ const CHANGE_COLOR = 'CHANGE_COLOR';
 const GAME_OVER = 'GAME_OVER';
 const RESTART_GAME = 'RESTART_GAME';
 const START = 'START';
+const CHOOSE_COLOR = 'CHOOSE_COLOR';
 
-export const addBall = index => {
-  return {
-    type: ADD_BALL,
-    index,
-  };
-};
-export const changePlayer = () => {
-  return {
-    type: CHANGE_PLAYER,
-  };
-};
 export const setGameOver = columns => {
   const gameOver = testWinner(columns);
   return {
@@ -24,14 +14,10 @@ export const setGameOver = columns => {
     gameOver,
   };
 };
-export const start = () => {
-  return {
-    type: START,
-  };
-};
-export const restartGame = () => {
-  return {
-    type: RESTART_GAME,
-  };
-};
+
+export const addBall = index => ({type: ADD_BALL, index});
+export const start = () => ({type: START});
+export const changePlayer = () => ({type: CHANGE_PLAYER});
+export const firstPlayerChooseColor = () => ({type: CHOOSE_COLOR});
 export const changeColor = () => ({type: CHANGE_COLOR});
+export const restartGame = () => ({type: RESTART_GAME});
