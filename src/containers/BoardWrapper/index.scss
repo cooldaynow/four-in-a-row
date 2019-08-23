@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   transition: all 0.4s ease-out;
   opacity: 1;
   height: 100vh;
@@ -12,4 +13,7 @@
   min-height: 80px;
   width: 100%;
   background-color: lightyellow;
+}
+.cols {
+  display: flex;
 }

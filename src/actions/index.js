@@ -1,10 +1,11 @@
-import testWinner from '../gameLogic';
+import testWinner, {testDraw} from '../gameLogic';
 const ADD_BALL = 'ADD_BALL';
 const CHANGE_PLAYER = 'CHANGE_PLAYER';
 const CHANGE_COLOR = 'CHANGE_COLOR';
 const GAME_OVER = 'GAME_OVER';
 const RESTART_GAME = 'RESTART_GAME';
 const START = 'START';
+const DRAW = 'DRAW';
 const CHOOSE_COLOR = 'CHOOSE_COLOR';
 
 export const setGameOver = columns => {
@@ -14,7 +15,13 @@ export const setGameOver = columns => {
     gameOver,
   };
 };
-
+export const setDrawOver = columns => {
+  const drawOver = testDraw(columns);
+  return {
+    type: DRAW,
+    drawOver,
+  };
+};
 export const addBall = index => ({type: ADD_BALL, index});
 export const start = () => ({type: START});
 export const changePlayer = () => ({type: CHANGE_PLAYER});

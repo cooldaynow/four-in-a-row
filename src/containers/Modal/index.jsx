@@ -3,7 +3,7 @@ import {restartGame} from '../../actions';
 import React, {useEffect, useState} from 'react';
 import './index.scss';
 
-const Modal = ({restartGame, player}) => {
+const Modal = ({restartGame, player, drawOver}) => {
   const [modal, setModal] = useState('none');
   const handleClick = () => {
     setModal('modal none');
@@ -14,18 +14,22 @@ const Modal = ({restartGame, player}) => {
   useEffect(() => {
     setTimeout(() => {
       setModal('modal');
-    }, 1500);
-  }, []);
+    },drawOver ?  300 : 1500);
+  }, [drawOver]);
 
   return (
     <div className={`${modal}`}>
-      <p> {player ? 'player 1 win' : 'player 2 win'} </p>
+      <p>
+        {' '}
+        {drawOver ? 'dRAW :) ' : player ? 'player 1 win' : 'player 2 win'}{' '}
+      </p>
       <button onClick={handleClick}>RESTART</button>
     </div>
   );
 };
 const mapStateToProps = state => ({
   player: !state.board.player,
+  drawOver: state.board.drawOver,
 });
 const mapDispatchToProps = dispatch => ({
   restartGame: () => dispatch(restartGame()),

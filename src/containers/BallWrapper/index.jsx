@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {winCoords} from '../../gameLogic';
+import Ball from '../../components/Ball';
 import './index.scss';
 
-const Ball = ({player, color, gameOver, winner, col, row}) => {
+const BallWrapper = ({player, color, gameOver, winner, col, row}) => {
   const [win, setWin] = useState(null);
   useEffect(() => {
     winCoords.map((elemCoords, i) => {
@@ -22,18 +23,7 @@ const Ball = ({player, color, gameOver, winner, col, row}) => {
     //console.log('effect ball');
   }, [gameOver, col, row]);
 
-  return (
-    <div
-      className={
-        gameOver && win
-          ? 'ball win'
-          : color === player
-          ? 'ball black'
-          : 'ball white'
-      }>
-      {player ? '1' : '2'}
-    </div>
-  );
+  return <Ball gameOver={gameOver} win={win} color={color} player={player} />;
 };
 const mapStateToProps = state => ({
   gameOver: state.board.gameOver,
@@ -41,4 +31,4 @@ const mapStateToProps = state => ({
   color: state.board.color,
 });
 
-export default connect(mapStateToProps)(Ball);
+export default connect(mapStateToProps)(BallWrapper);

@@ -52,6 +52,12 @@ const boardReducer = (state = initialState, action) => {
         ...state,
         chooseColor: true,
       };
+    case 'DRAW':
+      return {
+        ...state,
+        drawOver:action.drawOver,
+
+      };
     default:
       return state;
   }
