@@ -6,22 +6,20 @@ import StartScreen from '../StartScreen';
 import ChooseColor from '../ChooseColor';
 import './index.scss';
 
-const App = ({startGame, gameOver, chooseColor, drawOver}) => {
-  return (
-    <div className="app">
-      {(gameOver || drawOver) && <Modal />}
-      {chooseColor ? (
-        startGame ? (
-          <BoardWrapper />
-        ) : (
-          <ChooseColor />
-        )
+const App = ({startGame, gameOver, chooseColor, drawOver}) => (
+  <div className="app">
+    {(gameOver || drawOver) && <Modal />}
+    {chooseColor ? (
+      startGame ? (
+        <BoardWrapper />
       ) : (
-        <StartScreen />
-      )}
-    </div>
-  );
-};
+        <ChooseColor />
+      )
+    ) : (
+      <StartScreen />
+    )}
+  </div>
+);
 
 const mapStateToProps = state => ({
   chooseColor: state.board.chooseColor,

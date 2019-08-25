@@ -32,9 +32,13 @@ const Modal = ({restartGame, goHome, player, drawOver}) => {
     <div className={`wrap__modal ${modal}`}>
       <h1>
         {' '}
-        {drawOver ? 'dRAW :) ' : player ? 'First player WON!' : 'Second player WON!'}{' '}
+        {drawOver
+          ? 'dRAW :) '
+          : player
+          ? 'First player WON!'
+          : 'Second player WON!'}{' '}
       </h1>
-      <ModalButtons restart={restart} headHome ={headHome} />
+      <ModalButtons restart={restart} headHome={headHome} />
     </div>
   );
 };
