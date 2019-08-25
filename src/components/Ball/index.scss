@@ -17,6 +17,7 @@
   transition: all 0.2s linear;
   font-family: 'Shadows Into Light', cursive;
   font-size: 28px;
+  animation: ballDrop 0.3s ease-in forwards;
   &.white {
     background-color: white;
   }
@@ -27,5 +28,26 @@
   &.win {
     background-color: green;
     color: white;
+  }
+}
+
+@keyframes ballDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-700%);
+  }
+  80% {
+    transform: translateY(-25%);
+  }
+  85% {
+    transform: translateY(-35%);
+  }
+  90% {
+    transform: translateY(-55%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

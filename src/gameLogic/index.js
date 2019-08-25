@@ -56,21 +56,20 @@ const checkLanes = (x, offsetX, offsetY, arr) => {
     }
     if (cols || rows) {
       if (cols) {
-        console.log('cols', winCoords);
+        //console.log('cols', winCoords);
       } else if (rows) {
         winCoords.map(el => el.reverse());
-        console.log('rows', winCoords);
+        //        console.log('rows', winCoords);
       }
       //console.log('vertical || horizontal');
       return true;
     }
   }
 
-  // winCoords = [];
   return false;
 };
 
-const testWinner = arr => {
+export const testWinner = arr => {
   if (checkWin(true, arr) || checkWin(false, arr)) {
     return true;
   }
@@ -81,4 +80,3 @@ export const testDraw = arr => {
   const fullColumns = arr.filter(col => col.length === 6);
   return fullColumns.length === 7;
 };
-export default testWinner;

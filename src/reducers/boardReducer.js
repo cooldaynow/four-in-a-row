@@ -9,7 +9,6 @@ const initialState = {
 const boardReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_BALL':
-      // console.log('add TEST', state.cols);
       return {
         ...state,
         cols: [
@@ -19,19 +18,16 @@ const boardReducer = (state = initialState, action) => {
         ],
       };
     case 'CHANGE_PLAYER':
-      //console.log('change player');
       return {
         ...state,
         player: !state.player,
       };
     case 'CHANGE_COLOR':
-      //console.log('change color');
       return {
         ...state,
         color: !state.color,
       };
     case 'GAME_OVER':
-      //  console.log('game over');
       return {
         ...state,
         gameOver: action.gameOver,
@@ -55,9 +51,13 @@ const boardReducer = (state = initialState, action) => {
     case 'DRAW':
       return {
         ...state,
-        drawOver:action.drawOver,
-
+        drawOver: action.drawOver,
       };
+    case 'HOME':
+      return {
+        ...initialState,
+      };
+
     default:
       return state;
   }

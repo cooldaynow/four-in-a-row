@@ -1,29 +1,40 @@
 import {connect} from 'react-redux';
-import {restartGame} from '../../actions';
+import {restartGame, goHome} from '../../actions';
 import React, {useEffect, useState} from 'react';
+import ModalButtons from '../../components/ModalButtons';
 import './index.scss';
 
-const Modal = ({restartGame, player, drawOver}) => {
+const Modal = ({restartGame, goHome, player, drawOver}) => {
   const [modal, setModal] = useState('none');
-  const handleClick = () => {
-    setModal('modal none');
+
+  const restart = () => {
+    setModal('none');
     setTimeout(() => {
       restartGame();
-    }, 300);
+    }, 500);
+  };
+  const headHome = () => {
+    setModal('none');
+    setTimeout(() => {
+      goHome();
+    }, 500);
   };
   useEffect(() => {
-    setTimeout(() => {
-      setModal('modal');
-    },drawOver ?  300 : 1500);
+    setTimeout(
+      () => {
+        setModal('');
+      },
+      drawOver ? 300 : 1500,
+    );
   }, [drawOver]);
 
   return (
-    <div className={`${modal}`}>
-      <p>
+    <div className={`wrap__modal ${modal}`}>
+      <h1>
         {' '}
-        {drawOver ? 'dRAW :) ' : player ? 'player 1 win' : 'player 2 win'}{' '}
-      </p>
-      <button onClick={handleClick}>RESTART</button>
+        {drawOver ? 'dRAW :) ' : player ? 'First player WON!' : 'Second player WON!'}{' '}
+      </h1>
+      <ModalButtons restart={restart} headHome ={headHome} />
     </div>
   );
 };
@@ -33,6 +44,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   restartGame: () => dispatch(restartGame()),
+  goHome: () => dispatch(goHome()),
 });
 export default connect(
   mapStateToProps,

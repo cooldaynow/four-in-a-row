@@ -2,22 +2,22 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {setGameOver, setDrawOver} from '../../actions';
 import ColumnWrapper from '../../containers/ColumnWrapper';
-import Ball from '../../components/Ball';
+import BoardHeader from '../../components/BoardHeader';
 import './index.scss';
 
 const BoardWrapper = ({cols, checkGameOver, checkDrawOver, color, player}) => {
-  const [animation, setAnimation] = useState('board none');
+  const [animation, setAnimation] = useState('wrap__board none');
   useEffect(() => {
     checkGameOver(cols);
     checkDrawOver(cols);
     setTimeout(() => {
-      setAnimation('board');
-    }, 0);
+      setAnimation('wrap__board');
+    }, 100);
   }, [cols, checkGameOver, checkDrawOver]);
   return (
     <div className={animation}>
-      <Ball color={color} player={player} />
-      <div className="cols">
+      <BoardHeader color={color} player={player} />
+      <div className="wrap__cols">
         {cols.map((col, i) => (
           <ColumnWrapper key={`Col ${i}`} column={cols[i]} index={i} />
         ))}

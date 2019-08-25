@@ -10,7 +10,11 @@ const BallWrapper = ({player, color, gameOver, winner, col, row}) => {
     winCoords.map((elemCoords, i) => {
       elemCoords.map((el, index) => {
         if (elemCoords[index] === col && elemCoords[index + 1] === row) {
-          Promise.resolve(setWin(true)).then(() => {
+          Promise.resolve(
+            setTimeout(() => {
+              setWin(true);
+            }, 200)
+          ).then(() => {
             setTimeout(() => {
               setWin(false);
             }, 500);

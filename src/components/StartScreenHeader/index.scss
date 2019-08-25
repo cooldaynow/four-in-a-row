@@ -12,17 +12,6 @@
   justify-content: space-between;
   width: 50%;
   max-width: 450px;
-  h1 {
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 70px;
-    position: relative;
-    &:after {
-      content: '';
-      border: 2px solid black;
-      width: 100%;
-      position: absolute;
-    }
-  }
 }
 
 .balls {

@@ -1,9 +1,9 @@
 import React from 'react';
 import './index.scss';
 
-const Ball = ({gameOver, win, color, player  }) => {
+const Ball = ({gameOver, win, color, player}) => {
   return (
-        <div
+    <div
       className={
         gameOver && win
           ? 'ball win'
@@ -12,9 +12,8 @@ const Ball = ({gameOver, win, color, player  }) => {
           : 'ball white'
       }>
       {player ? '1' : '2'}
-    </div> 
+    </div>
   );
-}
-
+};
 
 export default Ball;
