@@ -1,4 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
+
+@media only screen and (max-width: 600px), (max-height: 700px) {
+  .choose__button {
+    font-size: 5em !important;
+  }
+  h1 {
+    font-size: 40px !important;
+  }
+  .ball {
+    max-height: calc(350px / 8) !important;
+  }
+  .board__ball {
+    height: 45px !important;
+    width: 45px !important;
+  }
+  .board__header {
+    width: 80% !important;
+  }
+  .wrap__column {
+    height: 350px !important;
+    width: calc(340px / 8) !important;
+  }
+  .screen__header {
+    width: 90% !important;
+  }
+  .btn__group {
+    div {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+}
 .app {
   display: flex;
   min-height: 100vh;

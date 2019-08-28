@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import ModalButtons from '../../components/ModalButtons';
 import './index.scss';
 
-const Modal = ({restartGame, goHome, player, drawOver}) => {
+const Modal = ({restartGame, goHome, playerNumber, isGameOver}) => {
   const [modal, setModal] = useState('none');
 
   const restart = () => {
@@ -24,17 +24,17 @@ const Modal = ({restartGame, goHome, player, drawOver}) => {
       () => {
         setModal('');
       },
-      drawOver ? 300 : 1500,
+      isGameOver === 'draw' ? 300 : 1500,
     );
-  }, [drawOver]);
+  }, [isGameOver]);
 
   return (
     <div className={`wrap__modal ${modal}`}>
       <h1>
         {' '}
-        {drawOver
+        {isGameOver === 'draw'
           ? 'dRAW :) '
-          : player
+          : playerNumber === 1
           ? 'First player WON!'
           : 'Second player WON!'}{' '}
       </h1>
@@ -42,9 +42,9 @@ const Modal = ({restartGame, goHome, player, drawOver}) => {
     </div>
   );
 };
-const mapStateToProps = state => ({
-  player: !state.board.player,
-  drawOver: state.board.drawOver,
+const mapStateToProps = ({playerNumber , isGameOver})=> ({
+  playerNumber : playerNumber === 1 ? 2 : 1,
+  isGameOver
 });
 const mapDispatchToProps = dispatch => ({
   restartGame: () => dispatch(restartGame()),

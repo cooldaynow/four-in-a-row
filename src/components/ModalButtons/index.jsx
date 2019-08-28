@@ -13,5 +13,4 @@ const ModalButtons = ({restart, headHome}) => (
     </button>
   </div>
 );
-
 export default ModalButtons;

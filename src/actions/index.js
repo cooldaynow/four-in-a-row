@@ -5,24 +5,26 @@ const CHANGE_COLOR = 'CHANGE_COLOR';
 const GAME_OVER = 'GAME_OVER';
 const RESTART_GAME = 'RESTART_GAME';
 const START = 'START';
-const DRAW = 'DRAW';
 const HOME = 'HOME';
 const CHOOSE_COLOR = 'CHOOSE_COLOR';
 
 export const setGameOver = columns => {
-  const gameOver = testWinner(columns);
+  const winner = testWinner(columns);
+  const draw = testDraw(columns);
+  let isGameOver;
+  if (winner) {
+    isGameOver= true;
+  }
+  if (draw) {
+    isGameOver = 'draw';
+  }
+
   return {
     type: GAME_OVER,
-    gameOver,
+    isGameOver,
   };
 };
-export const setDrawOver = columns => {
-  const drawOver = testDraw(columns);
-  return {
-    type: DRAW,
-    drawOver,
-  };
-};
+
 export const goHome = () => ({type: HOME});
 export const addBall = index => ({type: ADD_BALL, index});
 export const start = () => ({type: START});

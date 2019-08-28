@@ -1,19 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {winCoords} from '../../gameLogic';
+import {testWinner} from '../../gameLogic';
 import Ball from '../../components/Ball';
 import './index.scss';
 
-const BallWrapper = ({player, color, gameOver, winner, col, row}) => {
+const BallWrapper = ({playerNumber, colorNumber, isGameOver, col, row, cols}) => {
   const [win, setWin] = useState(null);
+
   useEffect(() => {
+    const winCoords = testWinner(cols) || [];
     winCoords.map((elemCoords, i) => {
       elemCoords.map((el, index) => {
         if (elemCoords[index] === col && elemCoords[index + 1] === row) {
           Promise.resolve(
             setTimeout(() => {
               setWin(true);
-            }, 200)
+            }, 200),
           ).then(() => {
             setTimeout(() => {
               setWin(false);
@@ -24,15 +26,21 @@ const BallWrapper = ({player, color, gameOver, winner, col, row}) => {
       });
       return null;
     });
-    //console.log('effect ball');
-  }, [gameOver, col, row]);
+  }, [isGameOver, col, row, cols]);
 
-  return <Ball gameOver={gameOver} win={win} color={color} player={player} />;
+  return (
+    <Ball
+      isGameOver={isGameOver}
+      win={win}
+      colorNumber={colorNumber}
+      playerNumber={playerNumber}
+    />
+  );
 };
-const mapStateToProps = state => ({
-  gameOver: state.board.gameOver,
-  winner: !state.board.player,
-  color: state.board.color,
+const mapStateToProps = ({isGameOver, colorNumber, cols}) => ({
+  isGameOver,
+  colorNumber,
+  cols,
 });
 
 export default connect(mapStateToProps)(BallWrapper);

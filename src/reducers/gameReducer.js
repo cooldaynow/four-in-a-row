@@ -6,7 +6,7 @@ const initialState = {
   isStartGame: false,
   isColorChoose: false,
 };
-const gameReducer = (state = initialState, action) => {
+const boardReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_BALL':
       return {
@@ -57,4 +57,4 @@ const gameReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default gameReducer ;
+export default boardReducer;

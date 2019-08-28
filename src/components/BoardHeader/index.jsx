@@ -1,12 +1,12 @@
 import React from 'react';
-import './index.scss';
 import Ball from '../Ball';
+import './index.scss';
 
-const BoardHeader = ({color, player}) => (
+const BoardHeader = ({colorNumber, playerNumber}) => (
   <div className="board__header">
     <h1> Player turn </h1>
     <div className="board__ball">
-      <Ball color={color} player={player} />
+      <Ball colorNumber={colorNumber} playerNumber={playerNumber} />
     </div>
   </div>
 );

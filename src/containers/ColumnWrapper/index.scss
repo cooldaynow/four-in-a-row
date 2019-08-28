@@ -1,12 +1,6 @@
-@media only screen and (max-width: 600px) {
-  .wrap__column{
-    height:350px !important;
-    width:calc(340px / 8 ) !important;
-  }
-}
 .wrap__column {
   display: flex;
-  cursor:pointer;
+  cursor: pointer;
   align-items: center;
   width: calc(500px / 7);
   height: 500px;
@@ -14,8 +8,8 @@
   border: 1px solid black;
   flex-direction: column-reverse;
   padding: 2px;
-  transition: all .1s linear;
+  transition: all 0.1s linear;
   &:hover {
-    background-color:darkgrey;
+    background-color: darkgrey;
   }
 }

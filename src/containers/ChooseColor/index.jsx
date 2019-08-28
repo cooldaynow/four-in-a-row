@@ -7,8 +7,8 @@ import './index.scss';
 const ChooseColor = ({start, changeColor}) => {
   return (
     <div className="wrap__choose">
-      <h1>First player color selection</h1>
-      <ChangeColor start = {start} changeColor={changeColor} />
+      <h1>First player color selection </h1>
+      <ChangeColor start={start} changeColor={changeColor} />
     </div>
   );
 };
@@ -18,7 +18,6 @@ const mapDispatchToProps = dispatch => {
     changeColor: () => dispatch(changeColor()),
   };
 };
-
 
 export default connect(
   null,

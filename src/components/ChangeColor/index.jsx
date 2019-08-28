@@ -5,15 +5,11 @@ const ChangeColor = ({changeColor, start}) => {
   const whiteStart = () => {
     changeColor();
     start();
-  }
+  };
   return (
-    <div className="btn__group" >
-      <div
-        onClick={whiteStart}
-        className={'white'}/>
-      <div
-        onClick={start}
-        className={'black'}/>
+    <div className="btn__group">
+      <div onClick={whiteStart} className={'white'} />
+      <div onClick={start} className={'black'} />
     </div>
   );
 };

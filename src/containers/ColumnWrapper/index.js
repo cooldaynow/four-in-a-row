@@ -4,24 +4,24 @@ import {addBall, changePlayer} from '../../actions';
 import BallWrapper from '../BallWrapper';
 import './index.scss';
 
-const ColumnWrapper = ({index, column, addBall, gameOver, changePlayer}) => {
-  const handleClick = () => {
-    if (column.length <= 5 && !gameOver) {
+const ColumnWrapper = ({index, column, addBall, isGameOver, changePlayer}) => {
+  const nextMove = () => {
+    if (column.length <= 5 && !isGameOver) {
       addBall(index);
       changePlayer();
     }
   };
   return (
-    <div className="wrap__column" onClick={handleClick}>
+    <div className="wrap__column" onClick={nextMove}>
       {column.map((ball, i) => (
-        <BallWrapper key={`Ball ${i}`} player={column[i]} col={index} row={i} />
+        <BallWrapper key={`Ball ${i}`} playerNumber={column[i]} col={index} row={i} />
       ))}
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  gameOver: state.board.gameOver,
+const mapStateToProps = ({isGameOver}) => ({
+  isGameOver,
 });
 const mapDispatchToProps = dispatch => ({
   addBall: index => dispatch(addBall(index)),

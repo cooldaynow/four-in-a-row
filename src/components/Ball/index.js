@@ -1,16 +1,16 @@
 import React from 'react';
 import './index.scss';
 
-const Ball = ({gameOver, win, color, player}) => (
+const Ball = ({isGameOver, win, colorNumber, playerNumber}) => (
   <div
     className={
-      gameOver && win
+      isGameOver && win
         ? 'ball win'
-        : color === player
+        : colorNumber === playerNumber
         ? 'ball black'
         : 'ball white'
     }>
-    {player ? '1' : '2'}
+    {playerNumber}
   </div>
 );
 

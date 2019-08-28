@@ -1,14 +1,22 @@
 import React from 'react';
 import './index.css';
-import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import {render} from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
+import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducers from './reducers';
+import {loadState, saveState} from './localStorage.js';
+import App from './containers/App';
+import gameReducer from './reducers/gameReducer';
 
-const store = createStore(rootReducers, applyMiddleware(thunk));
+const persistedState = loadState();
+const store = createStore(
+  gameReducer,
+  persistedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 render(
   <Provider store={store}>
